@@ -25,7 +25,7 @@ def create_your_own_tableau_db(data):
     st.title('Olympics Visualizer 🏅🏅')
     st.warning('Visualize the dataset yourself having your tableau knowledge 🚨🚨 ')
     config = load_config('config.json')
-    pyg.walk(data, env='Streamlit', dark='dark', spec=config)
+    pyg.walk(data, env='Streamlit', dark='dark')
     
   
     
