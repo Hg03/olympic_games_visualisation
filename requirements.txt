@@ -3,3 +3,4 @@ pandas
 plotly
 plotly-express
 pygwalker==0.1.9.1
+streamlit-lottie
