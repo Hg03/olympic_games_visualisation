@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import pygwalker as pyg
+from streamlit_lottie import st_lottie
 
 st.set_page_config(layout='wide')
 
@@ -21,14 +22,14 @@ def load_config(file_path):
     return config_str
 
 def create_your_own_tableau_db(data):
-    ## Title
     st.title('Olympics Visualizer 🏅🏅')
     st.warning('Visualize the dataset yourself having your tableau knowledge 🚨🚨 ')
     config = load_config('config.json')
     pyg.walk(data, env='Streamlit', dark='dark', spec=config)
     
+  
+    
 def main(data):
-    ## Title
     st.title('Olympics Visualizer 🏅🏅')
     
     st.subheader('Sample data')
@@ -76,16 +77,20 @@ def main(data):
         st.write(f"{medals['SILVER']} 🥉 **SILVER** medal")
     with c3:
         st.write(f"{medals['GOLD']} 🥉 **GOLD** medal")
+    
+   
 
 
 ## call the load data function
 data = load_data()
-
+url = 'https://lottie.host/63c93f8e-f9a4-4774-b68b-a667461ddf9c/5n8ETrUGjx.json'
+with st.sidebar:
+    st_lottie(url,key='user')
 ## To set all the filters
 st.sidebar.title('Filters 🥤🥤')
 
 ## Slice the data to view visualization on particular sample
-slicer = st.sidebar.number_input(label='Slice the data (default - 1000)',min_value=500,max_value=21697,step = 100)
+slicer = st.sidebar.number_input(label='Slice the data (default - 1000) ✂️✂️',min_value=500,max_value=21697,step = 100)
 data_sliced = data.head(slicer) ## Sliced data
 
 ## List of all olympic games
@@ -96,21 +101,20 @@ athletes = list(data.athlete_full_name.unique())
 years = ['beijing-2022','tokyo-2020','pyeongchang-2018','rio-2016','sochi-2014','london-2012','vancouver-2010','beijing-2008','turin-2006','athens-2004','salt-lake-city-2002','sydney-2000','nagano-1998','atlanta-1996','lillehammer-1994','barcelona-1992','albertville-1992','seoul-1988','calgary-1988','los-angeles-1984','sarajevo-1984','moscow-1980','lake-placid-1980','montreal-1976','innsbruck-1976','munich-1972','sapporo-1972','mexico-city-1968','grenoble-1968','tokyo-1964','innsbruck-1964','rome-1960','squaw-valley-1960','melbourne-1956','cortina-d-ampezzo-1956','helsinki-1952','oslo-1952','london-1948','st-moritz-1948','berlin-1936','garmisch-partenkirchen-1936','los-angeles-1932','lake-placid-1932','amsterdam-1928','st-moritz-1928','paris-1924','chamonix-1924','antwerp-1920','stockholm-1912','london-1908','st-louis-1904','paris-1900','athens-1896']
 
 ## Select the years and view the atheltes and their medals won
-year_of_game = st.sidebar.selectbox('Select the year of helding',years)
+year_of_game = st.sidebar.selectbox('Select the year of helding 🗓️🗓️',years)
 
 ## Select the olympic game for which you want to see the athletes and their medal won
-games = st.sidebar.selectbox('Select the Olympic Game',olympic_games)
+games = st.sidebar.selectbox('Select the Olympic Game 🎲 🏏',olympic_games)
 
 ## Select the athlete and check the number of medal they won
-athlete_box = st.sidebar.selectbox('Choose an ATHLETE',athletes)
+athlete_box = st.sidebar.selectbox('Choose an ATHLETE 🏃🏼',athletes)
 
-create = st.sidebar.checkbox('Want to create your tableau dashboard')
-
-
+create = st.sidebar.checkbox('Want to create your tableau dashboard 📈📈')
 if create:
     create_your_own_tableau_db(data)
 else:
     main(data)
+
 
 
 
