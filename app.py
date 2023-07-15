@@ -16,15 +16,10 @@ def load_data():
     data['athlete_full_name'].fillna('Anonymous',inplace=True)
     return data.sample(frac=1)
 
-def load_config(file_path):
-    with open(file_path, 'r') as config_file:
-        config_str = config_file.read()
-    return config_str
 
 def create_your_own_tableau_db(data):
     st.title('Olympics Visualizer 🏅🏅')
     st.warning('Visualize the dataset yourself having your tableau knowledge 🚨🚨 ')
-    config = load_config('config.json')
     pyg.walk(data, env='Streamlit', dark='dark')
     
   
