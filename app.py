@@ -16,13 +16,15 @@ def load_data():
     data['athlete_full_name'].fillna('Anonymous',inplace=True)
     return data.sample(frac=1) ## Shuffle the dataset
 
+#-------------------------------------------------------------------Custom Dashboard----------------------------------------------------------------------------------------
 
 def create_your_own_tableau_db(data):
     st.title('Olympics Visualizer 🏅🏅')
     st.warning('Visualize the dataset yourself having your tableau knowledge 🚨🚨 ')
     pyg.walk(data, env='Streamlit', dark='dark')
     
-  
+
+#-----------------------------------------------------------Main function for a data analysis-------------------------------------------------------------------------------------
     
 def main(data):
     st.title('Olympics Visualizer 🏅🏅')
@@ -74,7 +76,7 @@ def main(data):
         st.write(f"{medals['GOLD']} 🥉 **GOLD** medal")
     
    
-
+#----------------------------------------------------------------Loading and Sidebar Utilities--------------------------------------------------------------------------------
 
 ## call the load data function
 data = load_data()
