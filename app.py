@@ -1,8 +1,8 @@
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-import pygwalker as pyg
-from streamlit_lottie import st_lottie
+import streamlit as st # For beautiful interface
+import pandas as pd # To read the data
+import plotly.express as px # To create visualizations
+import pygwalker as pyg # To create your own dashboard
+from streamlit_lottie import st_lottie # To display animation
 
 st.set_page_config(layout='wide')
 
@@ -14,7 +14,7 @@ def load_data():
     data['country_code'].fillna(data['country_code'].mode()[0],inplace=True)
     data['athlete_url'].fillna('URL not found',inplace=True)
     data['athlete_full_name'].fillna('Anonymous',inplace=True)
-    return data.sample(frac=1)
+    return data.sample(frac=1) ## Shuffle the dataset
 
 
 def create_your_own_tableau_db(data):
