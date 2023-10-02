@@ -9,7 +9,7 @@ st.set_page_config(layout='wide')
 ## load data
 @st.cache_resource
 def load_data():
-    data = pd.read_csv('https://raw.githubusercontent.com/AshishJangra27/GFG-Hackathon/main/medals.csv')
+    data = pd.read_csv('https://raw.githubusercontent.com/AshishJangra27/GFG-Hackathon/main/Hackathon%20101/medals.csv')
     data['participant_title'].fillna(data['participant_title'].mode()[0],inplace=True)
     data['country_code'].fillna(data['country_code'].mode()[0],inplace=True)
     data['athlete_url'].fillna('URL not found',inplace=True)
